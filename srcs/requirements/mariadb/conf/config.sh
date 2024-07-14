@@ -1,6 +1,8 @@
 #!/bin/bash
 
-service mysql start;
+service mysql start
+
+sleep 5
 
 mysql -e "CREATE DATABASE IF NOT EXISTS \`${SQL_DATABASE}\`;"
 
@@ -14,4 +16,4 @@ mysql -u root -p${SQL_ROOT_PASSWORD} -e "FLUSH PRIVILEGES;"
 
 mysqladmin -u root -p${SQL_ROOT_PASSWORD} shutdown
 
-exec mysqld_safe
+mysqld_safe

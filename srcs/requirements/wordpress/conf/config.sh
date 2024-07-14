@@ -1,13 +1,14 @@
 #!/bin/bash
 
 sleep 10
-/usr/sbin/php-fpm7.3 -F
+php-fpm7.3 -F
 
 wp config create --allow-root \
 	--dbname=$SQL_DATABASE \
 	--dbuser=$SQL_USER \
 	--dbpass=$SQL_PASSWORD \
-	--dbhost=mariadb::3306 --path='/var/www/wordpress'
+	--dbhost=mariadb:3306 \
+	--path='/var/www/wordpress'
 
 wp core install --title=Inception \
 	--admin_user=nledent \
