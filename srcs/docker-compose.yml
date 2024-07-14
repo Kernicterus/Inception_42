@@ -48,6 +48,20 @@ services:
     expose:
       - "9000"
 
+  adminer:
+    container_name: adminer
+    env_file:
+      - .env
+    networks:
+      - inception
+    build:
+      context: requirements/bonus/adminer
+      dockerfile: Dockerfile
+    depends_on:
+      - mariadb
+    restart: on-failure
+    
+
 volumes:
     wordpress:
       driver: local
