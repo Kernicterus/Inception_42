@@ -7,7 +7,7 @@ RUN apt-get install -y curl gnupg \
 
 RUN npm install -g http-server
 RUN mkdir -p /var/www/html
-COPY files/home.html /var/www/html/.
+COPY files/index.html /var/www/html/.
 COPY conf/config.sh /.
 RUN chmod -x /config.sh
 EXPOSE 9254

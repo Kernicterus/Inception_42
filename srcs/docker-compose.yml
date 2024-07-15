@@ -22,6 +22,7 @@ services:
     depends_on:
       - wordpress
       - mariadb
+      - static_web
     build:
      context: requirements/nginx
      dockerfile: Dockerfile
@@ -73,8 +74,6 @@ services:
     build:
       context: requirements/bonus/static_web
       dockerfile: Dockerfile
-    depends_on:
-      - nginx
     restart: on-failure
     expose :
       - "9254"
