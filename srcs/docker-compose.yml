@@ -60,6 +60,8 @@ services:
     depends_on:
       - mariadb
     restart: on-failure
+    expose :
+      - "8080"
     
 
 volumes:
