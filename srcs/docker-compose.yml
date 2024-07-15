@@ -64,6 +64,21 @@ services:
       - "8080"
     
 
+  static_web:
+    container_name: static_web
+    env_file:
+      - .env
+    networks:
+      - inception
+    build:
+      context: requirements/bonus/static_web
+      dockerfile: Dockerfile
+    depends_on:
+      - nginx
+    restart: on-failure
+    expose :
+      - "9254"
+
 volumes:
     wordpress:
       driver: local
