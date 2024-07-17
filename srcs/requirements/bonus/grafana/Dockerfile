@@ -7,6 +7,7 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com 
 RUN apt-get update && apt-get install -y grafana
 RUN apt-get clean
 COPY conf/grafana.ini /etc/grafana/grafana.ini
+COPY conf/mariadb.yml  /etc/grafana/provisioning/datasources/.
 EXPOSE 8878
 
 ENTRYPOINT ["grafana-server", "--homepath=/usr/share/grafana", "--config=/etc/grafana/grafana.ini"]
