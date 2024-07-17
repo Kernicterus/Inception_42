@@ -78,16 +78,20 @@ services:
     expose :
       - "9254"
 
-  graphana:
-    container_name: graphana
+  grafana:
+    container_name: grafana
     env_file:
       - .env
+    environment:
+      - GF_SERVER_ROOT_URL=https://nledent.42.fr/grafana/
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
     networks:
       - inception
     depends_on:
       - mariadb
     build:
-      context: requirements/bonus/graphana
+      context: requirements/bonus/grafana
       dockerfile: Dockerfile
     restart: unless-stopped
     expose :
