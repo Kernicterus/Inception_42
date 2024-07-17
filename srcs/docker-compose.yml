@@ -45,6 +45,7 @@ services:
      dockerfile: Dockerfile
     depends_on:
       - mariadb
+      - redis
     restart: on-failure
     expose:
       - "9000"
@@ -99,8 +100,8 @@ services:
       - .env
     networks:
       - inception
-    depends_on:
-      - wordpress
+    # ports : 
+    #   - 6379:6379
     build:
       context: requirements/bonus/redis
       dockerfile: Dockerfile

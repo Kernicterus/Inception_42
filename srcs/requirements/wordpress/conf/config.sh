@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 10
+sleep 6
 cd /var/www/wordpress
 
 if ! [ -e wp-config.php ]; then
@@ -10,7 +10,7 @@ wp config create --allow-root \
 	--dbuser=$SQL_USER \
 	--dbpass=$SQL_PASSWORD \
 	--dbhost=mariadb:3306 \
-	--path='/var/www/wordpress'
+	--path=$PATH_WORDPRESS
 
 wp core install --url=$WP_URL \
 	--title=$WP_TITLE \
@@ -21,17 +21,21 @@ wp core install --url=$WP_URL \
 
 wp user create nledent2 nledent2@inception.com \
 	--role=subscriber --user_pass=$WP_USER_PASSWORD --allow-root
+
+chmod -R 775 $PATH_WORDPRESS
+chown -R www-data:www-data $PATH_WORDPRESS
+
 fi
 
 
-wp config set REDIS_HOST 172.18.0.7 --type=variable --allow-root
-wp config set REDIS_PORT 6379 --type=variable --allow-root
-wp config set WP_CACHE_KEY_SALT $DOMAIN_NAME --allow-root
-wp config set WP_REDIS_CLIENT phpredis --allow-root
-wp config set WP_CACHE true --type=constant --allow-root
-wp plugin install redis-cache --activate --allow-root
-wp plugin update -all --allow-root
-wp redis enable --allow-root
-chmod -R 775 wp-content
+wp config set WP_REDIS_HOST redis --type=constant --allow-root --path=$PATH_WORDPRESS
+wp config set WP_REDIS_PORT 6379 --type=constant --allow-root --path=$PATH_WORDPRESS
+wp config set WP_CACHE_KEY_SALT $DOMAIN_NAME --allow-root --path=$PATH_WORDPRESS
+wp config set WP_CACHE true --type=constant --allow-root --path=$PATH_WORDPRESS
+wp plugin install redis-cache --activate --allow-root --path=$PATH_WORDPRESS
+wp plugin update -all --allow-root --path=$PATH_WORDPRESS
+wp redis enable --allow-root --path=$PATH_WORDPRESS
+chmod -R 775 $PATH_WORDPRESS
+chown -R www-data:www-data $PATH_WORDPRESS
 
 php-fpm7.3 -F
