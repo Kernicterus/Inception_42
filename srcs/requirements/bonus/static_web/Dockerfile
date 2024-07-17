@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:bookworm
 
 RUN apt update -y && apt upgrade -y
 RUN apt-get install -y curl gnupg \

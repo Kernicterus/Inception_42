@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:bookworm
 
 RUN apt update -y && apt upgrade -y
 RUN apt install curl php php-mysqli php-pdo php-pdo-mysql -y

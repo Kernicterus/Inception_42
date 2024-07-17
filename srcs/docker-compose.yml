@@ -78,6 +78,21 @@ services:
     expose :
       - "9254"
 
+  graphana:
+    container_name: graphana
+    env_file:
+      - .env
+    networks:
+      - inception
+    depends_on:
+      - mariadb
+    build:
+      context: requirements/bonus/graphana
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    expose :
+      - "8878"
+
 volumes:
     wordpress:
       driver: local

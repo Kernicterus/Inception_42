@@ -4,7 +4,7 @@ sleep 10
 cd /var/www/wordpress
 
 if ! [ -e wp-config.php ]; then
-wp core download --allow-root
+#wp core download --allow-root
 wp config create --allow-root \
 	--dbname=$SQL_DATABASE \
 	--dbuser=$SQL_USER \
