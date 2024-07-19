@@ -37,5 +37,3 @@ wp plugin update -all --allow-root --path=$PATH_WORDPRESS
 wp redis enable --allow-root --path=$PATH_WORDPRESS
 chmod -R 775 $PATH_WORDPRESS
 chown -R www-data:www-data $PATH_WORDPRESS
-
-php-fpm7.3 -F
