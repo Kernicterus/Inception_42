@@ -23,4 +23,3 @@ RUN chmod +x /usr/local/bin/config.sh
 RUN mkdir -p /run/php 
 
 ENTRYPOINT ["/usr/local/bin/config.sh"]
-CMD ["php-fpm7.3", "-F"]

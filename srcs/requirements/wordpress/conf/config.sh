@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 6
+sleep 10
 cd /var/www/wordpress
 
 if ! [ -e wp-config.php ]; then
@@ -38,4 +38,4 @@ wp redis enable --allow-root --path=$PATH_WORDPRESS
 chmod -R 775 $PATH_WORDPRESS
 chown -R www-data:www-data $PATH_WORDPRESS
 
-$@
+php-fpm7.3 -F
