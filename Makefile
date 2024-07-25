@@ -7,6 +7,7 @@ build:
 	mkdir -p /home/nledent/data/wordpress
 	mkdir -p /home/nledent/data/mariadb
 	$(DOCKER_COMPOSE) up --build -d 
+	sudo chmod 777 /home/nledent/data/wordpress
 
 down:
 	$(DOCKER_COMPOSE) down
