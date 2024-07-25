@@ -13,5 +13,4 @@ RUN mkdir -p /run/mysqld \
 && chown -R mysql:mysql /var/run/mysqld \
 && chown -R mysql:mysql /var/lib/mysql
 
-RUN bash /config.sh
-ENTRYPOINT ["mysqld_safe"]
+ENTRYPOINT ["bash", "/config.sh"]
