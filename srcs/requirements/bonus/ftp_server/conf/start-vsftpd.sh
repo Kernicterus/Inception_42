@@ -16,10 +16,10 @@ if [ -z "$FTP_PASS" ]; then
     exit 1
 fi
 
-useradd -m "$FTP_USER" && echo "$FTP_USER:$FTP_PASS" | chpasswd
+
+useradd -m -g www-data "$FTP_USER" && echo "$FTP_USER:$FTP_PASS" | chpasswd
 chmod 775 -R /home/$FTP_USER
 
-chown -R $FTP_USER:$FTP_USER $PATH_WORDPRESS
 
 echo $FTP_USER | tee -a /etc/vsftpd.userlist &> /dev/null
 
