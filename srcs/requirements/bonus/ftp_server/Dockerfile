@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bullseye
 
 RUN apt update -y && apt upgrade -y
 RUN apt-get install -y vsftpd ssl-cert gettext-base

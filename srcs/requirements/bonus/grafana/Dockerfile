@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bullseye
 
 RUN apt update -y && apt upgrade -y && mkdir -p /etc/apt/keyrings/
 RUN apt-get -y install wget gnupg lsb-release 

@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bullseye
 
 RUN apt update -y && apt upgrade -y
 RUN apt install curl php php-mysqli php-pdo php-pdo-mysql -y

@@ -38,4 +38,4 @@ wp redis enable --allow-root --path=$PATH_WORDPRESS
 chmod -R 775 $PATH_WORDPRESS
 chown -R www-data:www-data $PATH_WORDPRESS
 
-php-fpm8.2 -F
+php-fpm7.4 -F
