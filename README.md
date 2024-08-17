@@ -28,7 +28,7 @@ The Inception project demonstrates the power and flexibility of Docker by using 
 
 1. **Clone the git :**
    ```bash
-   git clone git@github.com:Kernicterus/inception_42.git
+   git clone https://github.com/Kernicterus/inception_42.git
    ```
 
 2. **Install docker and docker-compose :**
