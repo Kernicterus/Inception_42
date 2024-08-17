@@ -1,3 +1,8 @@
+#!/bin/bash
+if [ -e "srcs/docker-compose.yml" ]; then
+    sudo rm srcs/docker-compose.yml
+fi
+cat <<EOF > srcs/docker-compose.yml
 services:
   mariadb:
     container_name: mariadb
@@ -131,14 +136,15 @@ volumes:
       driver_opts:
         type: 'none'
         o: 'bind'
-        device: '/home/nico/inception_data/wordpress'
+        device: '/home/${USER}/inception_data/wordpress'
     mariadb:
       driver: local
       driver_opts:
         type: 'none'
         o: 'bind'
-        device: '/home/nico/inception_data/mariadb'
+        device: '/home/${USER}/inception_data/mariadb'
 
 networks:
    inception:
      driver: bridge
+EOF

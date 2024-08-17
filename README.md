@@ -29,19 +29,61 @@ The Inception project demonstrates the power and flexibility of Docker by using 
 1. **Clone the git :**
    ```bash
    git clone git@github.com:Kernicterus/inception_42.git
+   ```
 
 2. **Install docker and docker-compose :**
    https://docs.docker.com/compose/install/
 
+3. **Set up a .env file :**
+   with the following variables and put it at the srcs/ directory:  
+
+   DOMAIN_NAME=localhost  
+   GLOBAL_USER=  
+
+   #Wordpress config  
+   PATH_WORDPRESS='/var/www/wordpress'  
+   WP_URL=localhost  
+   WP_TITLE=   
+   WP_ADMIN=  
+   WP_ADMIN_PWD=  
+   WP_ADMIN_EMAIL=  
+   WP_USER_PASSWORD=  
+
+   #Mariadb config
+   SQL_DATABASE=  
+   SQL_USER=  
+   SQL_PASSWORD=  
+   SQL_ROOT_PASSWORD=  
+
+   #vsftpd config  
+   PASV_MIN_PORT=21000  
+   PASV_MAX_PORT=21010  
+   PASV_ADDRESS=127.0.0.1  
+   FTP_USER=  
+   FTP_PASS=  
+
+4. **Add user to docker group :**
+   ```bash
+   sudo usermod -aG docker $USER
+   ```
+
 ## Usage
 
-4. **Run the program :**
+5. **Run the program :**
    ```bash
-    make
+   service docker start && make #without sudo
+   ```
+   You can then access to the different services :
+   - Wordpress :  https://localhost
+   - Adminer :    https://localhost/adminer
+   - Grafana :    https://localhost/grafana
+   - Static Web : https://localhost/static_web
+   - FTP :        By using a FTP client (e.g. Filezilla)
 
-5. **Stop the containers :**
+6. **Stop the containers :**
    ```bash
-    make down
+   make down
+   ```
 
 ## Aknowledgments
 - **Docker**: For providing a powerful containerization platform that enables us to package and run applications seamlessly. [Docker Documentation](https://docs.docker.com/)

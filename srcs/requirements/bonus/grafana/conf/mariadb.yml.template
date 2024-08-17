@@ -5,9 +5,9 @@ datasources:
     type: mysql
     access: proxy
     url: mariadb:3306
-    user: nledent
-    database: inception_db
+    user: ${SQL_USER}
+    database: ${SQL_DATABASE}
     secureJsonData:
-      password: inception
+      password: ${SQL_PASSWORD}
     jsonData:
       sslmode: "disable"

@@ -19,7 +19,7 @@ wp core install --url=$WP_URL \
 	--admin_email=$WP_ADMIN_EMAIL \
 	--allow-root
 
-wp user create nledent2 nledent2@inception.com \
+wp user create user_x2 user_x2@inception.com \
 	--role=subscriber --user_pass=$WP_USER_PASSWORD --allow-root
 
 chmod -R 775 $PATH_WORDPRESS

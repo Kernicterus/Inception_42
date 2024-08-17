@@ -1,11 +1,13 @@
-DOCKER_COMPOSE = docker compose -f srcs/docker-compose.yml
+DOCKER_COMPOSE = sudo docker compose -f srcs/docker-compose.yml
 
 
 all: build
 
 build:
-	mkdir -p /home/nledent/data/wordpress
-	mkdir -p /home/nledent/data/mariadb
+	mkdir -p /home/$(USER)/inception_data/wordpress
+	mkdir -p /home/$(USER)/inception_data/mariadb
+	sudo chmod +x generate_compose.sh
+	bash generate_compose.sh
 	$(DOCKER_COMPOSE) up --build -d 
 
 down:
@@ -13,13 +15,13 @@ down:
 
 clean:
 	$(DOCKER_COMPOSE) down --volumes --remove-orphans
-	docker image prune -a
+	sudo docker system prune -a
 
 delete_wp_config:
-	sudo rm -rf /home/nledent/data/wordpress/wp-config.php
+	rm -rf /home/$(USER)/inception_data/wordpress/wp-config.php
 
 delete_vol:
-	sudo rm -rf /home/nledent/data/mariadb
-	sudo rm -rf /home/nledent/data/wordpress
+	rm -rf /home/$(USER)/inception_data/mariadb
+	rm -rf /home/$(USER)/inception_data/wordpress
 
 .PHONY: all build down clean delete_vol delete_wp_config
